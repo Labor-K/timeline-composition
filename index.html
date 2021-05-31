@@ -1,0 +1,192 @@
+<link title="timeline-styles" rel="stylesheet" 
+href="style.css">
+
+<!-- 2 -->
+<script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
+
+
+<div id="wrap_belgrad" class="wrapper wrap_a">
+  <div id="signaturebel">
+    <div class="nam">Belgrad</div>
+  </div>
+  <div  id='timeline-belgrad' style=" height: 100%">
+  </div>
+</div>
+</div>
+
+
+
+
+<div id="wrap_berlin" class=" wrapper wrap_a">
+  <div id="signaturebac"> <div class="nam">BERLIN</div>
+</div>
+  <div id='timeline-berlin'  style=" height: 100%">
+  </div>
+</div>
+
+
+<div id="wrap_barcelona" class="wrapper wrap_a">
+  <div id="signatureber"> 
+    <div class="nam">BARCELONA</div>
+  </div>
+  
+  <div  id='timeline-barcelona' style=" height: 100%">
+  </div>
+</div>
+
+
+<button id="BelgradB">BelgradButton</button>
+<button id="BarcelonaB">BarcelonaButton</button>
+<button id="BerlinB">BerlinButton</button>
+
+<style>
+
+    /* RED INDICATORS; */
+
+  #signaturebel{
+    z-index: 99999999999999999;
+    display:inherit;
+    float: left;
+    position:absolute;
+    border-left: 1px solid red;
+    height: 100%;
+
+  }
+
+  #signaturebac{
+    /* width: 2%; */
+    z-index: 99999999999999999;
+    display:inherit;
+    float: left;
+    left: 32.3%;
+    position:absolute;
+    border-left: 1px solid red;
+    height: 100%;
+
+  }
+
+  #signatureber{
+    /* width: 2%; */
+    z-index: 99999999999999999;
+    display:inherit;
+    float: left;
+    left: 64.6%;
+    position:absolute;
+    border-left: 1px solid red;
+    height: 100%;
+
+  }
+
+  .nam{
+    background-color:red;
+    bottom: 5px;
+    position:absolute;
+  }
+
+
+    /* TIMELINES */
+
+
+  #timeline-berlin{
+    float:left;
+  }
+
+  #timeline-barcelona{
+  float:left;
+
+  }
+
+  #timeline-belgrad{
+    float:left;
+  }
+
+  .wrapper{
+
+display:inline-block;
+border: 1px solid blue;
+}
+
+
+.wrap_a{
+
+  width: 32.3%;
+}
+
+.wrap_b{
+
+width: 48%;
+}
+
+.wrap_c{
+
+width: 98%;
+}
+
+    /* BUTTONS */
+
+  #BelgradB #BarcelonaB #BerlinB {margin-top: 20px; }
+
+
+</style>
+<!-- 3 -->
+<script type="text/javascript">
+let storyCount
+storyCount = $('.wrapper').length 
+console.log(storyCount)
+
+$('#BelgradB').click(function (){
+  document.getElementById('wrap_belgrad').style.display="none";
+  document.getElementById('wrap_belgrad').classList.remove('wrapper');
+
+storyCount = $('.wrapper').length 
+
+var decision = "hello"
+
+  if (storyCount == 2){
+	decision = "wrap_b";}
+  if (storyCount == 3){
+	decision = "wrap_b";}
+  if (storyCount == 1){
+	decision = "wrap_c";}
+
+console.log(decision)
+console.log(storyCount)
+  // document.getElementById('wrap_barcelona').classList.remove("wrap_a")
+  // document.getElementById('wrap_berlin').classList.remove("wrap_a")
+
+  document.getElementById('wrap_berlin').classList.add(decision);
+  document.getElementById('wrap_barcelona').classList.add(decision)
+});
+
+
+
+var options = {
+    hash_bookmark: true,
+    timenav_position: "top",
+    optimal_tick_width: 100,
+    timenav_height_percentage: 28,
+    marker_width_min: 150,
+    slide_padding_lr: 250,
+    zoom_sequence: [0.1, 0.5, 1, 2, 13],
+    font: 'font.css'
+  };
+
+  $( function() {
+    $( ".wrapper" ).resizable();
+  } );
+
+
+timeline = new TL.Timeline('timeline-belgrad',
+'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuJbYi0scxg7kaGAm_hTEPjsT5HXspFGpvUYoq84H-GzKD1qBXwWTUYEzFuqNgU1HXNN952GUxpDbO/pubhtml?gid=0&single=true',options);
+timeline = new TL.Timeline('timeline-berlin',
+'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuJbYi0scxg7kaGAm_hTEPjsT5HXspFGpvUYoq84H-GzKD1qBXwWTUYEzFuqNgU1HXNN952GUxpDbO/pubhtml?gid=0&single=true',options);
+timeline = new TL.Timeline('timeline-barcelona',
+'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuJbYi0scxg7kaGAm_hTEPjsT5HXspFGpvUYoq84H-GzKD1qBXwWTUYEzFuqNgU1HXNN952GUxpDbO/pubhtml?gid=0&single=true',options);
+</script>
