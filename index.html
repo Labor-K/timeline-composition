@@ -1,172 +1,176 @@
-<link title="timeline-styles" rel="stylesheet" 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link title="timeline-styles" rel="stylesheet" 
 href="style.css">
 
 <!-- 2 -->
 <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://rawgit.com/RickStrahl/jquery-resizable/master/src/jquery-resizable.js"></script>
 
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&display=swap" rel="stylesheet">
 
-
-
-
-<div id="wrap_belgrad" class="wrapper wrap_a">
-  <div id="signaturebel">
-    <div class="nam">Belgrad</div>
-  </div>
-  <div  id='timeline-belgrad' style=" height: 100%">
-  </div>
-</div>
-</div>
-
-
-
-
-<div id="wrap_berlin" class=" wrapper wrap_a">
-  <div id="signaturebac"> <div class="nam">BERLIN</div>
-</div>
-  <div id='timeline-berlin'  style=" height: 100%">
-  </div>
-</div>
-
-
-<div id="wrap_barcelona" class="wrapper wrap_a">
-  <div id="signatureber"> 
-    <div class="nam">BARCELONA</div>
-  </div>
-  
-  <div  id='timeline-barcelona' style=" height: 100%">
-  </div>
-</div>
-
-
-<button id="BelgradB">BelgradButton</button>
-<button id="BarcelonaB">BarcelonaButton</button>
-<button id="BerlinB">BerlinButton</button>
+  <title>CMMM Timelines</title>
+</head>
 
 <style>
+  html,
+body {
+  height: 100%;
+  font-family: 'Barlow', sans-serif;
+    padding: 0;
+  margin: 0;
+}
 
-    /* RED INDICATORS; */
+.page-container {
+  margin: 20px;
+}
 
-  #signaturebel{
-    z-index: 99999999999999999;
-    display:inherit;
-    float: left;
-    position:absolute;
-    border-left: 1px solid red;
-    height: 100%;
+table {
+  border-collapse: collapse;
+  width: 100vw;
+  height: 100vh;
+  table-layout: fixed;
+}
 
-  }
+td {
+  padding: 8px;
+  border: 1px solid #fa0f0c;
+  width: 33%;
 
-  #signaturebac{
-    /* width: 2%; */
-    z-index: 99999999999999999;
-    display:inherit;
-    float: left;
-    left: 32.3%;
-    position:absolute;
-    border-left: 1px solid red;
-    height: 100%;
-
-  }
-
-  #signatureber{
-    /* width: 2%; */
-    z-index: 99999999999999999;
-    display:inherit;
-    float: left;
-    left: 64.6%;
-    position:absolute;
-    border-left: 1px solid red;
-    height: 100%;
-
-  }
-
-  .nam{
-    background-color:red;
-    bottom: 5px;
-    position:absolute;
-  }
-
-
-    /* TIMELINES */
-
-
-  #timeline-berlin{
-    float:left;
-  }
-
-  #timeline-barcelona{
-  float:left;
-
-  }
-
-  #timeline-belgrad{
-    float:left;
-  }
-
-  .wrapper{
-
-display:inline-block;
-border: 1px solid blue;
 }
 
 
-.wrap_a{
 
-  width: 32.3%;
+th {
+  padding: 8px;
+  color: white;
+  background: #000000;
+  border-right: 1px solid #fa0f0c;
 }
 
-.wrap_b{
 
-width: 48%;
+/*
+   this is important!
+   make sure you define this here
+   or in jQuery codef
+*/
+.resizer {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  bottom: 0;
+  left: auto;
+  width: 16px;    
+  cursor: col-resize;       
 }
 
-.wrap_c{
+#timeline-berlin{
+  display: inline-block;
+  height: 100vh;
+}
+#timeline-belgrad{
+  display: inline-block;
 
-width: 98%;
+  height: 100vh;
 }
 
-    /* BUTTONS */
+#timeline-barcelona{
+  display: inline-block;
 
-  #BelgradB #BarcelonaB #BerlinB {margin-top: 20px; }
+  height: 100vh;
+}
 
-
+.triangle-left {
+	width: 0;
+	height: 0;
+	border-top: 15px solid transparent;
+	border-right: 30px solid red;
+	border-bottom: 15px solid transparent;
+float:right;
+margin-right:-10px;
+}
 </style>
-<!-- 3 -->
-<script type="text/javascript">
-let storyCount
-storyCount = $('.wrapper').length 
-console.log(storyCount)
-
-$('#BelgradB').click(function (){
-  document.getElementById('wrap_belgrad').style.display="none";
-  document.getElementById('wrap_belgrad').classList.remove('wrapper');
-
-storyCount = $('.wrapper').length 
-
-var decision = "hello"
-
-  if (storyCount == 2){
-	decision = "wrap_b";}
-  if (storyCount == 3){
-	decision = "wrap_b";}
-  if (storyCount == 1){
-	decision = "wrap_c";}
-
-console.log(decision)
-console.log(storyCount)
-  // document.getElementById('wrap_barcelona').classList.remove("wrap_a")
-  // document.getElementById('wrap_berlin').classList.remove("wrap_a")
-
-  document.getElementById('wrap_berlin').classList.add(decision);
-  document.getElementById('wrap_barcelona').classList.add(decision)
-});
+<body>
+  
 
 
+  <table>
+    <thead>
+      <th>
+        Belgrad
+<div class="triangle-left"></div>
+      </th>
+      <th>
+        Berlin
+        <div class="triangle-left"></div>
 
+      </th>
+      <th>
+        Barcelona
+        <div class="triangle-left"></div>
+
+      </th>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          <div id="timeline-belgrad">
+          </div>
+        </td>
+        <td>
+          <div id="timeline-barcelona">
+          </div>
+        </td>
+        <td>
+          <div id="timeline-berlin">
+          </div>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<script>
+
+//$("td,th")
+$("td:first-child,td:nth-child(2),td:nth-child(3),th:first-child,th:nth-child(2),th:nth-child(3)")
+  .css({
+    /* required to allow resizer embedding */
+    position: "relative"
+  })
+  /* check .resizer CSS */
+  .prepend("<div class='resizer'></div>")
+  .resizable({
+    resizeHeight: false,
+    // we use the column as handle and filter
+    // by the contained .resizer element
+    handleSelector: "",
+    onDragStart: function(e, $el, opt) {
+      // only drag resizer
+      if (!$(e.target).hasClass("resizer"))
+        return false;
+      return true;
+    }
+  });
+
+  
 var options = {
     hash_bookmark: true,
     timenav_position: "top",
